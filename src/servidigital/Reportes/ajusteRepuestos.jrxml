@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="32ad6242-0767-446e-b1bd-cb3bc0e7cb43">
+	<property name="ireport.zoom" value="1.2100000000000042"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ajuste" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[6]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select operep.*, repuestos.codigo, repuestos.nombre, repuestos.descrip from operep, repuestos where operep.repuesto = repuestos.id_repuesto and tipo = 3 and id_tipo = $P{ajuste}]]>
+	</queryString>
+	<field name="id_operep" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_tipo" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="repuesto" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="signo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidadAnt" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidadAct" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="codigo_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{codigo}]]></variableExpression>
+	</variable>
+	<variable name="cantidad_1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad}*$F{signo}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="1" width="61" height="13" uuid="6209bd3f-3615-40d9-997a-2afe10397b08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="1" width="139" height="13" uuid="d4feaaf8-60e2-4590-af33-da84738cc1f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUESTO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="202" y="1" width="1" height="13" uuid="6a807e10-ab8e-4d41-8208-2d843eded623"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="13" uuid="00ddd16d-b594-4f90-846e-bc7724fe5bb9"/>
+			</line>
+			<line>
+				<reportElement x="457" y="1" width="1" height="13" uuid="4adb4e40-2ae6-44a1-94dc-468eb7b63664"/>
+			</line>
+			<staticText>
+				<reportElement x="203" y="1" width="125" height="13" uuid="23f2c7b3-1ac2-4f28-b47d-49ff33197e69"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANTERIOR]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="528" height="1" uuid="b445709e-bd10-4fac-a4e7-0f1289d85d79"/>
+			</line>
+			<line>
+				<reportElement x="527" y="1" width="1" height="13" uuid="4659db12-9e27-4aa9-89b6-fda58eab6997"/>
+			</line>
+			<line>
+				<reportElement x="62" y="1" width="1" height="13" uuid="65f116b6-f82f-4134-98b4-7f3c4c283b79"/>
+			</line>
+			<staticText>
+				<reportElement x="458" y="1" width="69" height="13" uuid="59cc87c9-f02a-4b38-a999-d59b47cca579"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AJUSTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="328" y="1" width="1" height="13" uuid="95c02247-4c39-4fbd-91f9-c0a7b07b5132"/>
+			</line>
+			<staticText>
+				<reportElement x="329" y="1" width="128" height="13" uuid="c6494346-d62b-4dc0-8689-6affcba3a3c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INGRESADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="14" width="528" height="1" uuid="59d80c4a-792c-424d-b261-b6585e5c38a6"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField>
+				<reportElement x="204" y="0" width="124" height="13" uuid="3c0174ec-90cb-4585-bc32-919cab1b6faa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidadAnt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="0" width="69" height="13" uuid="4853e9a9-7a05-4c78-9e06-8447a3e8989d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}*$F{signo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="0" width="139" height="13" uuid="05ae0f6e-abe9-4b71-813d-a2618deb2c4c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="61" height="13" uuid="48b171b6-4d98-4970-962a-a12686140db3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="0" width="128" height="13" uuid="8631617e-995d-42fc-b99d-2f3aeb7896ac"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidadAct}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="15" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="528" height="1" uuid="324c207e-65fd-4697-bd69-f84614bd90ed"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="1" width="61" height="14" uuid="5a17856b-d526-47a7-aef8-db819e652775"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{codigo_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="1" width="68" height="14" uuid="b7fb2300-a80d-43a3-8345-a0fd71f35778"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cantidad_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

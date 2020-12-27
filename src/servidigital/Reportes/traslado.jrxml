@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cargo de Repuestos" pageWidth="612" pageHeight="792" columnWidth="528" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="ded85412-09da-4714-be4b-22e10bc211d8">
+	<property name="ireport.zoom" value="1.3310000000000035"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Bibliotecas\\wiZa\\Documentos\\Proyectos\\SERVIDIGITAL\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="traslado" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select trasrep.*,usuarios.nombre, (select descripcion from depositos where id_deposito = deporigen) as origen, (select descripcion from depositos where id_deposito = depdestin) as destino from trasrep inner join usuarios on usuario = cedula where id_traslado = $P{traslado}]]>
+	</queryString>
+	<field name="id_traslado" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usuario" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="deporigen" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="depdestin" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="origen" class="java.lang.String"/>
+	<field name="destino" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="15" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="247" y="0" width="281" height="15" uuid="26647242-e80e-4581-a17c-08ab443dc54c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="117">
+			<image>
+				<reportElement x="0" y="0" width="120" height="65" uuid="107eb381-db08-472b-b048-f509abce1db7"/>
+				<imageExpression><![CDATA["Servidigital.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="14" y="0" width="514" height="20" uuid="4cde4a88-f86f-4e2d-88e1-f1ad62b8dd56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRASLADO DE INVENTARIO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="247" y="99" width="281" height="15" uuid="2369f143-975d-462c-998a-665174e80086"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descrip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="147" y="20" width="100" height="15" uuid="3edea972-7e79-4d7f-8f98-e4e14b6dc528"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRASLADO Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="35" width="100" height="15" uuid="aa28f30b-bf2b-41b0-b1c5-8c577da6aa46"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[USUARIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="84" width="100" height="15" uuid="a0a64438-9818-41d7-88bb-5df8209ec8b5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="247" y="84" width="281" height="15" uuid="d06a286d-4711-4f06-a7ac-4d9445cd2b84"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="147" y="99" width="100" height="15" uuid="fa26f1b7-dd6f-48f1-8cc2-02ec0f3227ac"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="247" y="35" width="281" height="15" uuid="ad182965-3c51-4008-b32c-046cb0bd84dc"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="147" y="51" width="100" height="15" uuid="a4e673be-59f7-40d9-b4de-1372ea2a1465"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPÓSITO ORIGEN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="247" y="51" width="226" height="15" uuid="3b100adb-e940-4faa-abc8-21f64a7481b5"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{origen}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="120" y="68" width="127" height="15" uuid="ca19e279-bcb4-4b88-add6-31457eac7c0b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPÓSITO DESTINO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="247" y="68" width="226" height="15" uuid="883a9e0e-4d94-406c-925b-c27c8b0b79cc"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{destino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="20" width="255" height="15" forecolor="#FF0000" uuid="52522866-9924-4f57-b935-5a28a0e60956"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_traslado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="15">
+			<subreport>
+				<reportElement x="0" y="0" width="528" height="15" uuid="8a44d9e3-4177-41f1-b443-f9992a8556f1"/>
+				<subreportParameter name="tra">
+					<subreportParameterExpression><![CDATA[$F{id_traslado}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["servidigital/Reportes/trasladoRepuestos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="15">
+			<textField>
+				<reportElement x="200" y="0" width="80" height="15" uuid="634edd84-c513-4a27-8dac-6cda7c5ad935"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="280" y="0" width="40" height="15" uuid="cafccc77-f1c9-4bc3-98a9-c70a2e942826"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

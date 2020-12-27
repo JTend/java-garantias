@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="items de cargo" pageWidth="612" pageHeight="792" whenNoDataType="BlankPage" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cd4f187f-85c5-4ac6-8251-8f1bc12e0189">
+	<property name="ireport.zoom" value="1.331000000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="car" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select itemcar.*, repuestos.* from itemcar inner join repuestos on repuesto = id_repuesto where cargo = $P{car}]]>
+	</queryString>
+	<field name="cargo" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="repuesto" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_repuesto" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="categoria" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="cantidad_1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+	</variable>
+	<variable name="codigo_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{codigo}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="1" width="61" height="13" uuid="2502e234-bda2-415b-a732-cd51e17319e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="1" width="139" height="13" uuid="b9a07bad-e53c-46b2-9d12-f0294dc32b00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUESTO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="528" height="1" uuid="1684453d-3515-4b41-8fba-31a069f85935"/>
+			</line>
+			<line>
+				<reportElement x="0" y="14" width="528" height="1" uuid="0f1b63bb-faaa-42b5-b344-84385666ccc0"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="13" uuid="9129fa82-4900-40dc-b7b4-78f04d7e3ce2"/>
+			</line>
+			<line>
+				<reportElement x="62" y="1" width="1" height="13" uuid="3b4dc599-b5a6-437f-a4e0-8da1fcc6c5ad"/>
+			</line>
+			<line>
+				<reportElement x="202" y="1" width="1" height="13" uuid="d1f8681e-f528-42e5-b7e9-03bdfad3f2ed"/>
+			</line>
+			<staticText>
+				<reportElement x="203" y="1" width="254" height="13" uuid="0de02678-36f7-45ef-8fbd-fb3cee342142"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="1" width="69" height="13" uuid="3b644882-3b4b-4700-8275-119958a4e05f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="457" y="1" width="1" height="13" uuid="21e14359-0d75-4f80-8adc-b6ff265c4e30"/>
+			</line>
+			<line>
+				<reportElement x="527" y="1" width="1" height="13" uuid="b1e154be-6dfe-4a1e-83bc-47b79194ab5d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="0" width="61" height="13" uuid="ee17ad12-ca86-45c6-bc0d-ed7e70020ef0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="0" width="139" height="13" uuid="ba59b0dc-8fbc-4540-a477-2037b63e4369"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="0" width="69" height="13" uuid="16750f61-7beb-411c-b2e1-f4ceb78bbc8b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="203" y="0" width="254" height="13" uuid="f76f8165-5c03-42e2-ab80-26cad0f1ffec"/>
+				<textFieldExpression><![CDATA[$F{descrip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="528" height="1" uuid="92cfc92e-c699-456e-9886-30c2461f3967"/>
+			</line>
+			<textField>
+				<reportElement x="458" y="1" width="69" height="16" uuid="5fc4a9a8-8d15-4662-94e8-dc715f306489"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cantidad_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="1" width="61" height="16" uuid="d4f71830-4555-4816-840e-ebb0c01da5ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{codigo_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

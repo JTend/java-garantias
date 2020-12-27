@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InformeAsignacion" pageWidth="612" pageHeight="792" whenNoDataType="BlankPage" columnWidth="528" leftMargin="42" rightMargin="42" topMargin="42" bottomMargin="42" uuid="af1e476d-e53a-4ac8-acf1-fba46b9f17f1">
+	<property name="ireport.zoom" value="1.3310000000000055"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="caso" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[496]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Bibliotecas\\wiZa\\Documentos\\Proyectos\\SERVIDIGITAL\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT c.id_caso, c.fecha_creacion, p.nombre as cliente, c.id_tecnico, t.nombre as tecnico, p.nombre as cliente, d.diagnostico, s.solucion, c.desc_caso, pp.codigo, pp.descripcion
+FROM casos c inner join clientes p on c.cedula = p.cedula inner join tecnicos t on c.id_tecnico = t.cedula inner join diagnosticos d on c.id_diagnostico = d.id_diagnostico inner join soluciones s on c.id_solucion = s.id_solucion inner join equipo e on c.id_equipo = e.id_equipo inner join productos pp on e.id_producto = pp.id_producto
+WHERE c.id_caso = $P{caso}]]>
+	</queryString>
+	<field name="id_caso" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_creacion" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="id_tecnico" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tecnico" class="java.lang.String"/>
+	<field name="diagnostico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="solucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="desc_caso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="136">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="528" height="125" uuid="9a5070f7-bee2-441e-a3f9-44a6235c3b24"/>
+			</rectangle>
+			<image>
+				<reportElement x="1" y="15" width="120" height="65" uuid="c2de9d15-d8c3-47fd-beec-3cb5c8fcd55a"/>
+				<imageExpression><![CDATA["Servidigital.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="14" y="15" width="514" height="20" uuid="7ed9ce2c-831d-4d2f-9eb3-745efafe1e78"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DE ASIGNACIÓN DE REPUESTOS]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="525" height="15" uuid="5b33fab3-8aae-4d52-8542-73b0aa24a2f5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="95" width="99" height="15" uuid="bd0b9d75-dbce-4fcd-bd22-b0b30b1d8bb7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="50" width="99" height="15" uuid="54ffb663-66fb-44d3-aa2c-66f9011cb3cf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="65" width="99" height="15" uuid="1e19e83c-e1f1-4dbb-8176-13b32524d35f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECEPCIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="35" width="99" height="15" uuid="78d5808e-ba43-4a52-a025-6acfb959aafb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CASO Nº]]></text>
+			</staticText>
+			<textField pattern="0000000000">
+				<reportElement x="220" y="35" width="308" height="15" forecolor="#FF0000" uuid="fcba3c11-a66e-47e5-9dab-1bb7f333287e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_caso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="50" width="308" height="15" uuid="dae6f283-d26c-4b20-b290-f64cb4c3e9bd"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="220" y="65" width="308" height="15" uuid="3b2755fa-d115-4f76-81e5-7cf363932771"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_creacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="220" y="95" width="308" height="15" uuid="ba2b5be6-f173-419f-8db8-7d16bfeb068e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph firstLineIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{desc_caso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="80" width="99" height="15" uuid="8015164d-82b2-4555-904b-f84e2582bd34"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[EQUIPO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="80" width="64" height="15" uuid="a6a764b0-ad14-47ff-a381-3f7212711519"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="80" width="244" height="15" uuid="70caad3e-d12a-442e-b192-3bd2e2e3bc67"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="528" height="15" uuid="2cb714cd-254a-4a81-8b52-76724574e8e7"/>
+				<subreportParameter name="caso">
+					<subreportParameterExpression><![CDATA[$P{caso}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["asignacionRepuestos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="113" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="268" y="0" width="260" height="83" uuid="2e50f73b-8f49-4355-b29c-e59b2748710f"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="260" height="83" uuid="9095d91b-91c4-40cf-9ab7-92b5f7227060"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="268" y="0" width="68" height="15" uuid="ca353325-8e3b-4c5d-8556-23089e097bee"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[SOLUCIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="15" uuid="f1927100-8c11-469e-9ee5-8304c1c07bd1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[DIAGNÓSTICO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="204" y="98" width="80" height="15" uuid="83f00be1-b579-4c5d-b949-1517b8af0805"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="284" y="98" width="40" height="15" uuid="f3daf031-69a2-4c93-b5d4-fa2cc859f16e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="83" width="52" height="15" uuid="f96f5e53-de1c-49d4-9b73-6a47ce8976e2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[TÉCNICO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="83" width="68" height="15" uuid="a5f66e36-3aef-4e27-acfb-336bf1cb2982"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_tecnico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="83" width="408" height="15" uuid="0442f802-6317-42cc-b1a3-af2d865d6967"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tecnico}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="15" width="260" height="15" uuid="4b26139a-92ff-49ae-8006-4ed813343db1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnostico}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="268" y="15" width="260" height="15" uuid="fd376eff-155c-4c50-8251-4e47cb412bb8"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solucion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

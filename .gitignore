@@ -1,0 +1,9 @@
+#Production
+/build
+/dist
+#Tests
+/test
+#Reports to run in developing mode
+/reportes
+#Explanations all around the source code
+*.txt
